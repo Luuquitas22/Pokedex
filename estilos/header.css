@@ -1,0 +1,29 @@
+header {
+    width: 95%;
+    margin: 10px auto;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.titulo {
+    flex: 1;
+    text-align: center;
+    font-size: 2em;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.botones {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+

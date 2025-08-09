@@ -1,0 +1,53 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+h1 {
+    font-size: 4.5em;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 1.8em;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="email"] {
+    width: 25%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+form input[type="text"]::placeholder,
+form input[type="password"]::placeholder {
+    color: #999;
+}
+
+form input[type="submit"] {
+    width: 17%;
+    background-color: #22c1c3;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 10px 0;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+}
+
