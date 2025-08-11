@@ -26,7 +26,7 @@
                 <h2>Buscar Pokemon:</h2>
             </div>
             <div class="buscar-pokemon">
-                <form action="index.php?action=editar" method="post">
+                <form action="index.php?action=buscar" method="post">
                     <input type="text" name="busqueda" placeholder="Nombre, ID o Tipo" id="buscador">
                     <input type="submit" value="Buscar Pokémon" id="enviar">
                 </form>
