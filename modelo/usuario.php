@@ -1,5 +1,5 @@
 <?php
-require_once 'database.php';
+require_once __DIR__. '/database.php';
 
 class Usuario {
     private $db;
@@ -16,11 +16,11 @@ class Usuario {
     }
 
     function verificarUsuario($username, $password) {
-        $query = "SELECT * FROM usuarios WHERE username = '$username'";
+        $query = "SELECT * FROM usuarios WHERE nombre = '$username'";
         $result = $this->db->query($query);
         if ($result && count($result) > 0) {
             $user = $result[0];
-            if (password_verify($password, $user['password'])) {
+            if (password_verify($password, $user['contrasena'])) {
                 return true;
             }
         }

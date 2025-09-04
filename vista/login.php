@@ -10,7 +10,7 @@
 <body>
     <main>
         <h1>Login</h1>
-        <form action="index.php?action=usuarioLogin" method="post">
+        <form action="../index.php?action=usuarioLogin" method="post">
             <label for="username">Usuario:</label>
             <input type="text" id="username" name="username" required>
             <br>

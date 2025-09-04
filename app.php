@@ -1,10 +1,10 @@
 <?php
-require_once './modelo/database.php';
-require_once './modelo/pokemon.php';
-require_once './controlador/pokemonController.php';
-require_once './modelo/usuario.php';
-require_once './controlador/usuarioController.php';
-require_once './router/router.php';
+require_once __DIR__ . '/modelo/database.php';
+require_once __DIR__ . '/modelo/pokemon.php';
+require_once __DIR__ . '/controlador/pokemonController.php';
+require_once __DIR__ . '/modelo/usuario.php';
+require_once __DIR__ . '/controlador/usuarioController.php';
+require_once __DIR__ . '/router/router.php';
 
 if(session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -19,9 +19,16 @@ $usuarioController = new UsuarioController($usuario);
 
 $router = new Router();
 
-$router->get('mostrarTodo', fn() => $pokemonController->mostrarTodo());
+$router->get('mostrarTodo', function() use ($pokemonController) {
+    $pokemones = $pokemonController->mostrarTodo();
+    mostrarVista($pokemones);
+});
+
 $router->get('crear', fn() => $pokemonController->agregarPokemon());
-$router->get('buscar', fn() => $pokemonController->buscarPokemon());
+$router->get('buscar', function() use ($pokemonController) {
+    $pokemones = $pokemonController->buscarPokemon();
+    mostrarVista($pokemones);
+});
 $router->get('eliminar', function() use ($pokemonController) {
     $id = $_GET['id'] ?? null;
     if ($id) {
@@ -32,6 +39,20 @@ $router->get('eliminar', function() use ($pokemonController) {
 });
 $router->get('usuarioRegistrar', fn() => $usuarioController->registrar());
 $router->get('usuarioLogin', fn() => $usuarioController->login());
+$router->get('cerrarSesion', function() {
+    session_unset();
+    session_destroy();
+    header('Location: /index.php');
+    exit();
+});
+
+function mostrarVista($pokemones) {
+    if (isset($_SESSION['username'])) {
+        require __DIR__ . '/vista/home.php';
+    } else {
+        require __DIR__ . '/vista/pokedex.php';
+    }
+}
 
 return $router;
 ?>

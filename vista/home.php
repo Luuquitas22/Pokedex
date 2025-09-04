@@ -1,3 +1,12 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['username'])) {
+    header('Location: /index.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,10 +23,10 @@
             <div class="titulo">
                 <h1>Pokedex</h1>
             </div>
-            <div class="botones">
-                <button onclick="location.href='vista/login.php'">Ingresar</button>
-                <button onclick="location.href='vista/registrarse.php'">Registrarse</button>
-            </div>
+            <h2>
+                Bienvenido, <?php echo htmlspecialchars($_SESSION['username']); ?>!
+            </h2>
+            <button onclick="location.href='/index.php?action=cerrarSesion'">Cerrar Sesion</button>
         </div>
     </header>
     <main>
@@ -26,7 +35,7 @@
                 <h2>Buscar Pokemon:</h2>
             </div>
             <div class="buscar-pokemon">
-                <form action="index.php?action=editar" method="post">
+                <form action="index.php?action=buscar" method="post">
                     <input type="text" name="busqueda" placeholder="Nombre, ID o Tipo" id="buscador">
                     <input type="submit" value="Buscar Pokémon" id="enviar">
                 </form>

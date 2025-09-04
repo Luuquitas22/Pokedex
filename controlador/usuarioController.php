@@ -1,5 +1,5 @@
 <?php
-require_once 'modelo/usuario.php';
+require_once __DIR__ . '/../modelo/usuario.php';
 
 class UsuarioController {
     private $model;
@@ -12,7 +12,7 @@ class UsuarioController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $username = $_POST['username'];
             $password = $_POST['password'];
-            $email = $_POST['email']; // Asegúrate de que el formulario incluya un campo para el email
+            $email = $_POST['email'];
             if ($this->model->registrarUsuario($username, $password, $email)) {
                 header('Location: ../vista/login.php');
                 exit();
@@ -31,13 +31,13 @@ class UsuarioController {
             if ($this->model->verificarUsuario($username, $password)) {
                 session_start();
                 $_SESSION['username'] = $username;
-                header('Location: vista/home.php');
+                header('Location: /index.php?action=mostrarTodo');
                 exit();
             } else {
                 echo "Usuario o contraseña incorrectos.";
             }
         } else {
-            require 'vista/login.php';
+            require '../vista/login.php';
         }
     }
 }

@@ -1,6 +1,5 @@
 <?php
-
-require_once './modelo/pokemon.php';
+require_once __DIR__ . '/../modelo/pokemon.php';
 
 class PokemonController {
     private $model;
@@ -10,8 +9,7 @@ class PokemonController {
     }
 
     public function mostrarTodo() {
-        $pokemones = $this->model->mostrarBase();
-        require 'vista/pokedex.php';
+        return $this->model->mostrarBase();
     }
 
     public function eliminarPokemon($id) {
@@ -34,7 +32,7 @@ class PokemonController {
                 $pokemones = array_merge($pokemones, $this->model->buscarPokemonPorID($busqueda));
             }
             $pokemones = array_unique($pokemones, SORT_REGULAR);
-            require 'vista/pokedex.php';
+            return $pokemones;
         } else {
             $this->mostrarTodo();
         }
