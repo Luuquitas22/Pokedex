@@ -40,5 +40,22 @@ class UsuarioController {
             require '../vista/login.php';
         }
     }
+
+    public function recuperarContrasena() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $identificador = $_POST['identificador'];
+            $nuevaContrasena = $_POST['password'];
+            $usuario = $this->model->buscarPorNombreOEmail($identificador);
+            if ($usuario) {
+                $this->model->actualizarContrasena($usuario['id'], $nuevaContrasena);
+                echo "Contraseña actualizada correctamente.";
+                header('Location: ../vista/login.php');
+            } else {
+                echo "Usuario o email no encontrado.";
+            }
+        } else {
+            require '../vista/recuperarContrasena.php';
+        }
+    }
 }
 ?>

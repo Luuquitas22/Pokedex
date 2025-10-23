@@ -39,6 +39,7 @@ $router->get('eliminar', function() use ($pokemonController) {
 });
 $router->get('usuarioRegistrar', fn() => $usuarioController->registrar());
 $router->get('usuarioLogin', fn() => $usuarioController->login());
+$router->get('recuperarContrasena', fn() => $usuarioController->recuperarContrasena());
 $router->get('cerrarSesion', function() {
     session_unset();
     session_destroy();

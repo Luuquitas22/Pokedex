@@ -20,6 +20,7 @@
             <input type="submit" value="Ingresar">
         </form>
         <p>¿No tienes una cuenta? <a href="registrarse.php">Registrarse</a></p>
+        <p>¿Olvidaste tu contraseña? <a href="recuperarContrasena.php">Recuperar Contraseña</a></p>
     </main>
 </body>
 </html>
